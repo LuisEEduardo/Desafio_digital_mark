@@ -1,4 +1,5 @@
-﻿using Desafio_digital_mark.Domain.Modelo;
+﻿using Desafio_digital_mark.Data.Map;
+using Desafio_digital_mark.Domain.Modelo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_digital_mark.Data;
@@ -15,8 +16,8 @@ public class Contexto : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
-
+        modelBuilder.ApplyConfiguration(new ClienteMap());
+        modelBuilder.ApplyConfiguration(new ProjetoMap());
         base.OnModelCreating(modelBuilder);
     }
 }

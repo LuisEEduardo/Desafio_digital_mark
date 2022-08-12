@@ -26,7 +26,8 @@ public class ProjetoMap : IEntityTypeConfiguration<Projeto>
 
         builder
             .HasOne(p => p.Cliente)
-            .WithOne(c => c.Projeto);
+            .WithOne(c => c.Projeto)
+            .HasForeignKey<Projeto>(p => p.ClienteId);
 
     }
 }
