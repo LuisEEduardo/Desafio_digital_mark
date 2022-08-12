@@ -7,7 +7,7 @@ namespace Desafio_digital_mark.Data.Repositorio;
 public class RepositorioBase<T> : IRepositorioBase<T> where T : class
 {
 
-    private readonly Contexto _contexto;
+    protected readonly Contexto _contexto;
 
     public RepositorioBase(Contexto contexto)
     {
