@@ -1,5 +1,6 @@
 ﻿using Desafio_digital_mark.Application.App;
 using Desafio_digital_mark.Application.Interface;
+using Desafio_digital_mark.Application.Mapper;
 using Desafio_digital_mark.Data;
 using Desafio_digital_mark.Data.Repositorio;
 using Desafio_digital_mark.Domain.Repositorio;
@@ -16,6 +17,8 @@ public class Bootstrap
         services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
         services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
         services.AddScoped<IProjetoRepositorio, ProjetoRepositorio>();
+
+        services.AddAutoMapper(typeof(AutoMapperConfig));
 
         services.AddScoped<IClienteAplicacao, ClienteAplicacao>();
         services.AddScoped<IProjetoAplicacao, ProjetoAplicacao>();
