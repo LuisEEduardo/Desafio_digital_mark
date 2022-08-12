@@ -9,6 +9,8 @@ public class Cliente
 
     public int Id { get; private set; }
     public string Nome { get; private set; }
+    
+    public Projeto Projeto { get; private set; }
 
     public void AlterarNome(string nome)
     {

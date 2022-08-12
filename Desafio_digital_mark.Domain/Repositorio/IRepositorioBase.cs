@@ -2,11 +2,11 @@
 
 namespace Desafio_digital_mark.Domain.Repositorio;
 
-public interface IRepositorioBase<T>
+public interface IRepositorioBase<T> : IDisposable where T : class
 {
-    void Incluir(T entidade);
-    void Alterar(T entidade);
+    Task Incluir(T entidade);
+    Task Alterar(T entidade);
     Task<T> SelecionarPorId(Expression<Func<T, bool>> expressao);
-    Task ExcluirPorId(Expression<Func<T, bool>> expressao);
+    Task Excluir(Expression<Func<T, bool>> expressao);
     Task<IEnumerable<T>> SelecionarTodos();
 }
