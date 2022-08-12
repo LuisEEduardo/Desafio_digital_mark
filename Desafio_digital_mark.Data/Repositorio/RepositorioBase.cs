@@ -26,7 +26,7 @@ public class RepositorioBase<T> : IRepositorioBase<T> where T : class
         await _contexto.SaveChangesAsync();
     }
 
-    public async Task<T> SelecionarPorId(Expression<Func<T, bool>> expressao)
+    public async Task<T> Selecionar(Expression<Func<T, bool>> expressao)
         => await _contexto.Set<T>()
                           .SingleOrDefaultAsync(expressao);
 
@@ -37,7 +37,7 @@ public class RepositorioBase<T> : IRepositorioBase<T> where T : class
 
     public async Task Excluir(Expression<Func<T, bool>> expressao)
     {
-        var entidade = await SelecionarPorId(expressao);
+        var entidade = await Selecionar(expressao);
         _contexto.Set<T>().Remove(entidade);
         await _contexto.SaveChangesAsync();
     }
