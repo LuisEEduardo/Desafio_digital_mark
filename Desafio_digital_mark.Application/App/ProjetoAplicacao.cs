@@ -40,7 +40,7 @@ public class ProjetoAplicacao : IProjetoAplicacao
 
     public async Task<IEnumerable<ProjetoViewModel>> SelecionarTodos()
     {
-        var projetos = await _projetoRepositorio.SelecionarTodos();
+        var projetos = await _projetoRepositorio.SelecionarProjetosComClientesAsync();
         return _mapper.Map<IEnumerable<ProjetoViewModel>>(projetos);
     }
 }
