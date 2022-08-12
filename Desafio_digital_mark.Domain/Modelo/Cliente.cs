@@ -2,9 +2,14 @@
 
 public class Cliente
 {
-    public Cliente(string nome)
+    public static Cliente CriarCliente(string nome)
     {
-        Nome = nome;
+        Cliente cliente = new()
+        {
+            Nome = nome
+        };
+
+        return cliente;
     }
 
     public int Id { get; private set; }

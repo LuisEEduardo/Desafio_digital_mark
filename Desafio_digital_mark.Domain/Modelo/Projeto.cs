@@ -2,17 +2,23 @@
 
 public class Projeto
 {
-    public Projeto(string nome, string tecnologia, Cliente cliente)
+    public static Projeto CriarProjeto(string nome, string tecnologia, Cliente cliente)
     {
-        Nome = nome;
-        Tecnologia = tecnologia;
-        Cliente = cliente;
+        Projeto projeto = new()
+        {
+            Nome = nome,
+            Tecnologia = tecnologia,
+            Cliente = cliente
+        };
+
+        return projeto;
     }
 
     public int Id { get; private set; }
     public string Nome { get; private set; }
     public string Tecnologia { get; private set; }
     public Cliente Cliente { get; private set; }
+    public int ClienteId { get; private set; }
 
     public void AlterarNome(string nome)
     {
