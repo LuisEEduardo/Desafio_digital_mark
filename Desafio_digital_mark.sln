@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio_digital_mark.Data",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio_digital_mark.Application", "Desafio_digital_mark.Application\Desafio_digital_mark.Application.csproj", "{79D92ECF-AB08-4773-80BE-7DFB1106CE3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio_digital_mark.Infra", "Desafio_digital_mark.Infra\Desafio_digital_mark.Infra.csproj", "{8D6504E1-C05E-4E62-A795-13CD7A532C95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{79D92ECF-AB08-4773-80BE-7DFB1106CE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D92ECF-AB08-4773-80BE-7DFB1106CE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79D92ECF-AB08-4773-80BE-7DFB1106CE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D6504E1-C05E-4E62-A795-13CD7A532C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D6504E1-C05E-4E62-A795-13CD7A532C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D6504E1-C05E-4E62-A795-13CD7A532C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D6504E1-C05E-4E62-A795-13CD7A532C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
