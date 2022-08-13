@@ -28,6 +28,7 @@ public class RepositorioBase<T> : IRepositorioBase<T> where T : class
 
     public async Task<T> Selecionar(Expression<Func<T, bool>> expressao)
         => await _contexto.Set<T>()
+                          .AsNoTracking()
                           .SingleOrDefaultAsync(expressao);
 
     public async Task<IEnumerable<T>> SelecionarTodos()

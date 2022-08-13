@@ -1,5 +1,6 @@
 ﻿using Desafio_digital_mark.Application.Interface;
 using Desafio_digital_mark.Application.ViewModel;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_digital_mark.Api.Controllers
@@ -49,6 +50,28 @@ namespace Desafio_digital_mark.Api.Controllers
             await _clienteAplicacao.Alterar(cliente);
             return Ok(cliente);
         }
+
+
+        [HttpPatch("{id:int}")]
+        public async Task<ActionResult<ClienteViewModel>> Atualizar(int id, [FromBody] JsonPatchDocument<ClienteViewModel> cliente)
+        {
+            var clienteAtualizar = await _clienteAplicacao.SelecionarPorId(id);
+
+            if (clienteAtualizar is null)
+                return NotFound();
+
+            cliente.ApplyTo(clienteAtualizar, ModelState);
+
+            var isValid = TryValidateModel(clienteAtualizar);
+
+            if (!isValid)
+                return BadRequest(ModelState);
+
+            await _clienteAplicacao.Alterar(clienteAtualizar);
+
+            return Ok(clienteAtualizar);
+        }
+
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<ClienteViewModel>> Excluir(int id)
