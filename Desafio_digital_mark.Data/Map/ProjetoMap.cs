@@ -10,11 +10,6 @@ public class ProjetoMap : IEntityTypeConfiguration<Projeto>
         builder.HasKey(x => x.Id);
 
         builder
-            .Property(x => x.Id)
-            .ValueGeneratedOnAdd()
-            .IsRequired();
-
-        builder
             .Property(x => x.Nome)
             .HasColumnType("VARCHAR(100)")
             .IsRequired();
@@ -25,9 +20,14 @@ public class ProjetoMap : IEntityTypeConfiguration<Projeto>
             .IsRequired();
 
         builder
+            .Property(x => x.ClienteId)
+            .HasColumnType("INT")
+            .ValueGeneratedNever()
+            .IsRequired();
+
+        builder
             .HasOne(p => p.Cliente)
             .WithOne(c => c.Projeto)
             .HasForeignKey<Projeto>(p => p.ClienteId);
-
     }
 }

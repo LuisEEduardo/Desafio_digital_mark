@@ -18,8 +18,16 @@ public class ProjetoAplicacao : IProjetoAplicacao
     }
 
     public async Task Alterar(ProjetoViewModel projeto)
-    {
-        await _projetoRepositorio.Alterar(_mapper.Map<Projeto>(projeto));
+    {       
+        var p = await _projetoRepositorio.Selecionar(p => p.Id == projeto.Id);
+
+        if (p != null)
+        {
+            p.AlterarTecnologia(projeto.Tecnologia);
+            p.AlterarNome(projeto.Nome);
+            p.AlterarCliente(projeto.ClienteId);
+            await _projetoRepositorio.Alterar(p);
+        }                
     }
 
     public async Task Excluir(int id)
@@ -29,12 +37,13 @@ public class ProjetoAplicacao : IProjetoAplicacao
 
     public async Task Incluir(ProjetoViewModel projeto)
     {
-        await _projetoRepositorio.Incluir(_mapper.Map<Projeto>(projeto));
+        Projeto p = Projeto.CriarProjeto(projeto.Nome, projeto.Tecnologia, projeto.ClienteId);
+        await _projetoRepositorio.Incluir(p);        
     }
 
     public async Task<ProjetoViewModel> SelecionarPorId(int id)
     {
-        var projeto = await _projetoRepositorio.Selecionar(p => p.Id == id);
+        var projeto = await _projetoRepositorio.SelecionarProjetoComCliente(p => p.Id == id);
         return _mapper.Map<ProjetoViewModel>(projeto);
     }
 

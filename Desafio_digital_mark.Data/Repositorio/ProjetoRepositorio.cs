@@ -15,6 +15,7 @@ public class ProjetoRepositorio : RepositorioBase<Projeto>, IProjetoRepositorio
     public async Task<Projeto> SelecionarProjetoComCliente(Expression<Func<Projeto, bool>> expressao)
         => await _contexto
                     .Projeto
+                    .AsNoTracking()
                     .Include(p => p.Cliente)
                     .SingleOrDefaultAsync(expressao);
 

@@ -1,14 +1,16 @@
-﻿namespace Desafio_digital_mark.Domain.Modelo;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Desafio_digital_mark.Domain.Modelo;
 
 public class Projeto
 {
-    public static Projeto CriarProjeto(string nome, string tecnologia, Cliente cliente)
+    public static Projeto CriarProjeto(string nome, string tecnologia, int clienteId)
     {
         Projeto projeto = new()
         {
             Nome = nome,
             Tecnologia = tecnologia,
-            Cliente = cliente
+            ClienteId = clienteId
         };
 
         return projeto;
@@ -30,9 +32,9 @@ public class Projeto
         Tecnologia = tecnologia;
     }
 
-    public void AlterarCliente(Cliente cliente)
+    public void AlterarCliente(int clienteId)
     {
-        Cliente = cliente;
+        ClienteId = clienteId;
     }
 
 }
